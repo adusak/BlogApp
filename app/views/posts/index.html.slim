@@ -1,0 +1,31 @@
+h1 Listing posts
+- flash.each do |name, msg|
+  = content_tag :div, msg, class: "alert alert-#{name}"
+- @posts.each do |post|
+  h1 = post.title
+  .row style='margin-bottom: 10px'
+    .col-xs-1
+      = image_tag post.user.avatar.url(:thumb), class: 'img-circle'
+    .col-md-11
+      h4 = post.user.email
+      - if post.updated_at == post.created_at
+        h6 = "Created at #{post.created_at.to_formatted_s(:long_ordinal)}"
+      - else
+        h6 = "Updated at #{post.updated_at.to_formatted_s(:long_ordinal)}, created at #{post.created_at.to_formatted_s(:long_ordinal)}"
+      - if can? :manage, post
+        = link_to edit_post_path(post), class: 'btn btn-warning btn-sm', style: 'margin-right: 5px' do
+          span.glyphicon.glyphicon-pencil aria-hidden = 'true'
+          = '  Edit'
+        = link_to(post, data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'btn btn-danger btn-sm') do
+          span.glyphicon.glyphicon-remove aria-hidden = 'true'
+          = '   Delete'
+  .panel.panel-default
+    .panel-body = post.body
+  hr
+
+
+br
+
+- if can? :create, Post
+  = link_to 'New Post', new_post_path, class: 'btn btn-primary'
+
