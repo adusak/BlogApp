@@ -85,6 +85,7 @@ Rails.application.configure do
                                               exception_recipients: %w{adam@melkus.info}
                                           }
 
+  config.action_mailer.default_url_options = { :host => ENV['EMAIL_HOST'] }
   ActionMailer::Base.smtp_settings = {
       :address        => "smtp.sendgrid.net",
       :port           => "25",
