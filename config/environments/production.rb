@@ -85,7 +85,6 @@ Rails.application.configure do
                                               exception_recipients: %w{adam@melkus.info}
                                           }
 
-  config.action_mailer.default_url_options = { :host => 'warm-wave-1682.herokuapp.com' }
   ActionMailer::Base.smtp_settings = {
       :address        => "smtp.sendgrid.net",
       :port           => "25",
