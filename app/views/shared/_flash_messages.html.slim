@@ -1,0 +1,8 @@
+- flash.each do |name, msg|
+  - if name == 'alert'
+    - bname = 'danger'
+  - elsif name == 'notice'
+    - bname = 'success'
+  - else
+    - bname = name
+  = content_tag :div, msg, class: "alert alert-#{bname}"

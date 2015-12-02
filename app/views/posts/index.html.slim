@@ -1,6 +1,5 @@
 h1 Listing posts
-- flash.each do |name, msg|
-  = content_tag :div, msg, class: "alert alert-#{name}"
+= render 'shared/flash_messages'
 - @posts.each do |post|
   h1 = post.title
   .row style='margin-bottom: 10px'

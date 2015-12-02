@@ -1,7 +1,6 @@
 h2
-- flash.each do |name, msg|
-  = content_tag :div, msg, class: "alert alert-#{'danger' if name == 'alert'}"
   | Log in
+= render 'shared/flash_messages'
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   = f.error_notification
   .form-inputs

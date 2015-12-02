@@ -11,18 +11,18 @@ html
       = menu_group do
         = menu_item "Home", '/'
         = menu_item "Posts", posts_path
-        = menu_group pull: :right do
-          - if current_user
-            = drop_down 'User' do
-              = menu_item 'Edit user', edit_registration_path(current_user)
-              = menu_item 'Log out', destroy_user_session_path, :method => :delete
-          - else
-            = drop_down 'Log in' do
-              = simple_form_for :user, url: session_path(:user), html: {class: 'navbar-form'} do |f|
-                = f.input :email
-                = f.input :password
-                = f.button :submit, 'Log in'
-                = link_to 'Sign up', new_registration_path(:user), class: 'btn btn-success'
+      = menu_group pull: :right do
+        - if current_user
+          = drop_down "#{current_user.email}" do
+            = menu_item 'Edit user', edit_registration_path(current_user)
+            = menu_item 'Log out', destroy_user_session_path, :method => :delete
+        - else
+          = drop_down 'Log in' do
+            = simple_form_for :user, url: session_path(:user), html: {class: 'navbar-form'} do |f|
+              = f.input :email
+              = f.input :password
+              = f.button :submit, 'Log in', style: 'margin-right: 10px'
+              = link_to 'Sign up', new_registration_path(:user), class: 'btn btn-success'
     .container
       == yield
 

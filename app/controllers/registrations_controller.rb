@@ -1,5 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-
   before_filter :configure_permitted_parameters
 
   protected
@@ -13,5 +12,4 @@ class RegistrationsController < Devise::RegistrationsController
       u.permit(:email, :password, :password_confirmation, :current_password, :avatar)
     end
   end
-
 end

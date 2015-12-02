@@ -5,9 +5,7 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
 
-    unless user
-      return
-    end
+    return unless user
 
     if user.has_role? :admin
       can :manage, :all
