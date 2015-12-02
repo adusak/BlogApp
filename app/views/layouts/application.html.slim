@@ -25,3 +25,6 @@ html
                 = link_to 'Sign up', new_registration_path(:user), class: 'btn btn-success'
     .container
       == yield
+
+    javascript:
+      $(":file").filestyle({input: false});
