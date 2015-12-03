@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'posts#index'
+  resources :users, only: [:index]
   resources :posts
   devise_for :users, controllers: {registrations: 'registrations'}
   # The priority is based upon order of creation: first created -> highest priority.

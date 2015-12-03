@@ -1,0 +1,16 @@
+h1 Users
+= render 'shared/flash_messages'
+- @users.each do |user|
+  .row style='margin-bottom: 10px'
+    .col-xs-1
+      = image_tag user.avatar.url(:thumb), class: 'img-circle'
+    .col-md-11
+      h4 = user.email
+      - if current_user == user
+        = link_to edit_registration_path(user), class: 'btn btn-warning btn-sm', style: 'margin-right: 5px' do
+          span.glyphicon.glyphicon-pencil aria-hidden = 'true'
+          = '  Edit'
+        = link_to(user_registration_path, data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'btn btn-danger btn-sm') do
+          span.glyphicon.glyphicon-remove aria-hidden = 'true'
+          = '   Delete'
+  hr
