@@ -5,13 +5,14 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
 
-    return unless user
+    user ||= User.new
 
     if user.has_role? :admin
       can :manage, :all
+    elsif user.id.nil?
+      can :index, Post
     else
-      can :read, Post
-      can :create, Post
+      can [:read, :create], Post
       can :manage, Post, user: user
       cannot :index, User
     end
