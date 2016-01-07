@@ -16,6 +16,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    authorize! :edit, @post
   end
 
   # POST /posts
